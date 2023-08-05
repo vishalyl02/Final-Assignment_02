@@ -6,4 +6,6 @@ Data Base schema Link: https://docs.google.com/spreadsheets/d/18jTuePAzEqvTt0BXD
 <br>
 Note: If it throws an error of 'react-scripts' is not recognized as an internal or external command
 do fix by running an command in terminal of root folder of project.
+<br>
+<br>
 npm install react-scripts --save
