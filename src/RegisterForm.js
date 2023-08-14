@@ -1,50 +1,33 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useState } from 'react';
+import axios from 'axios';
+import AuthForm from './AuthForm'; // Adjust the path as needed
+import "./Form.css"
 
-const RegisterForm = () => {
-  const [formData, setFormData] = useState({
-    username: "",
-    email: "",
-    password: "",
-  });
+function RegistrationForm() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [registrationSuccess, setRegistrationSuccess] = useState(false);
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleRegistration = async () => {
     try {
-      const response = await axios.post("/api/register", formData); // Replace with your backend API endpoint for user registration
-      console.log(response.data); // Handle success or error messages from the backend
+      await axios.post('http://localhost:5000/registration', { customer: { email, password } });
+      setRegistrationSuccess(true); // Set registration success state
     } catch (error) {
-      console.error("Error registering user:", error);
+      // Registration error handling
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        name="username"
-        onChange={handleChange}
-        value={formData.username}
-      />
-      <input
-        type="email"
-        name="email"
-        onChange={handleChange}
-        value={formData.email}
-      />
-      <input
-        type="password"
-        name="password"
-        onChange={handleChange}
-        value={formData.password}
-      />
-      <button type="submit">Register</button>
-    </form>
+    <AuthForm
+      email={email}
+      setEmail={setEmail}
+      password={password}
+      setPassword={setPassword}
+      buttonText="Register"
+      onSubmit={handleRegistration}
+      message={registrationSuccess ? 'Registration successful! You can now log in.' : ''}
+    />
   );
-};
+}
 
-export default RegisterForm;
+export default RegistrationForm;

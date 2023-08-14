@@ -1,105 +1,208 @@
-// ArticleData.js
+// frontend/src/components/ArticleData.js
 const articles = [
-    // Science category
-    {
-      id: 1,
-      title: "The Wonders of Space Exploration",
-      content: "Discover the latest breakthroughs in space exploration and the search for extraterrestrial life.",
-      category: "science",
-    },
-    {
-      id: 2,
-      title: "The Fascinating World of Quantum Physics",
-      content: "Unravel the mysteries of quantum mechanics and its implications for our understanding of reality.",
-      category: "science",
-    },
-    {
-      id: 3,
-      title: "Climate Change and Its Global Impact",
-      content: "An in-depth analysis of climate change and the urgent need for sustainable solutions.",
-      category: "science",
-    },
-  
-    // Business category
-    {
-      id: 4,
-      title: "Entrepreneurship in the Digital Age",
-      content: "Exploring the rise of digital entrepreneurship and the innovative startups disrupting industries.",
-      category: "business",
-    },
-    {
-      id: 5,
-      title: "The Future of E-commerce",
-      content: "Examining the trends and advancements shaping the future of online retail and e-commerce.",
-      category: "business",
-    },
-    {
-      id: 6,
-      title: "Sustainable Business Practices",
-      content: "How businesses are integrating sustainability and social responsibility into their strategies.",
-      category: "business",
-    },
-  
-    // Art category
-    {
-      id: 7,
-      title: "The Renaissance Art Movement",
-      content: "Exploring the artistic achievements and innovations of the Renaissance period.",
-      category: "art",
-    },
-    {
-      id: 8,
-      title: "Frida Kahlo: A Symbol of Surrealism",
-      content: "A look into the life and works of the iconic Mexican artist, Frida Kahlo.",
-      category: "art",
-    },
-    {
-      id: 9,
-      title: "Street Art and Graffiti Culture",
-      content: "Understanding the cultural significance and impact of street art and graffiti.",
-      category: "art",
-    },
-  
-    // Music category
-    {
-      id: 10,
-      title: "The Evolution of Jazz Music",
-      content: "Tracing the origins and evolution of jazz music from its roots to modern-day jazz fusion.",
-      category: "music",
-    },
-    {
-      id: 11,
-      title: "Beethoven's Symphony No. 9",
-      content: "An in-depth analysis of Beethoven's iconic Symphony No. 9 and its impact on classical music.",
-      category: "music",
-    },
-    {
-      id: 12,
-      title: "The History of Rock and Roll",
-      content: "From Elvis Presley to The Beatles, a journey through the history of rock and roll.",
-      category: "music",
-    },
-  
-    // Nature category
-    {
-      id: 13,
-      title: "Exploring the Amazon Rainforest",
-      content: "Discover the wonders of the Amazon rainforest and its unique ecosystem.",
-      category: "nature",
-    },
-    {
-      id: 14,
-      title: "The Majestic Yosemite National Park",
-      content: "A journey through Yosemite's breathtaking landscapes and stunning waterfalls.",
-      category: "nature",
-    },
-    {
-      id: 15,
-      title: "The Enchanting Northern Lights",
-      content: "Witness the captivating display of the Northern Lights in the Arctic sky.",
-      category: "nature",
-    },
-  ];
-  
-  export default articles;
-  
+  // Science Articles
+  {
+    id: 1,
+    category: "science",
+    title: "The Fascinating World of Quantum Mechanics",
+    content: "Explore mind-bending concepts of quantum mechanics.",
+    readingTime: "2 min"
+  },
+  {
+    id: 2,
+    category: "science",
+    title: "The Wonders of Space Exploration",
+    content: "Journey through history and achievements of space exploration.",
+    author: "Emily Johnson",
+    readingTime: "3 min"
+  },
+  {
+    id: 3,
+    category: "science",
+    title: "The Power of CRISPR: Gene Editing Revolution",
+    content: "Discover the groundbreaking gene-editing technology, CRISPR-Cas9.",
+    author: "Michael Lee",
+    readingTime: "4 min"
+  },
+  {
+    id: 4,
+    category: "science",
+    title: "Climate Change and Its Global Impact",
+    content: "Learn about the science and consequences of climate change.",
+    author: "Sarah Thompson",
+    readingTime: "5 min"
+  },
+  {
+    id: 5,
+    category: "science",
+    title: "Artificial Intelligence: A Journey Towards Sentience",
+    content: "Explore advancements in AI and its potential for consciousness.",
+    readingTime: "3 min"
+  },
+
+  // Business Articles
+  {
+    id: 6,
+    category: "business",
+    title: "The Role of Leadership in Modern Organizations",
+    content: "Discover the qualities of effective leadership in businesses.",
+    author: "John Smith",
+    readingTime: "4 min"
+  },
+  {
+    id: 7,
+    category: "business",
+    title: "Marketing Strategies for Small Businesses",
+    content: "Learn about effective marketing tactics for small businesses.",
+    author: "Emma Davis",
+    readingTime: "3 min"
+  },
+  {
+    id: 8,
+    category: "business",
+    title: "The Rise of E-Commerce: Changing Consumer Behavior",
+    content: "Explore the impact of e-commerce on consumer buying habits.",
+    author: "Michael Johnson",
+    readingTime: "4 min"
+  },
+  {
+    id: 9,
+    category: "business",
+    title: "Entrepreneurship in the Digital Age",
+    content: "Discover the opportunities and challenges for digital entrepreneurs.",
+    author: "Sophia Lee",
+    readingTime: "3 min"
+  },
+  {
+    id: 10,
+    category: "business",
+    title: "The Future of Work: Embracing Remote Work",
+    content: "Explore the shift towards remote work and its implications.",
+    readingTime: "5 min"
+  },
+
+  // Art Articles
+  {
+    id: 11,
+    category: "art",
+    title: "The Evolution of Modern Art",
+    content: "Trace the development of modern art movements.",
+    author: "Olivia Johnson",
+    readingTime: "4 min"
+  },
+  {
+    id: 12,
+    category: "art",
+    title: "The Renaissance Era: Art and Culture",
+    content: "Explore the golden age of art and culture during the Renaissance.",
+    author: "David Brown",
+    readingTime: "3 min"
+  },
+  {
+    id: 13,
+    category: "art",
+    title: "Art as a Medium for Social Change",
+    content: "Learn how art can impact social and political movements.",
+    author: "Sophie Davis",
+    readingTime: "5 min"
+  },
+  {
+    id: 14,
+    category: "art",
+    title: "The Beauty of Abstract Expressionism",
+    content: "Discover the emotional depth of abstract expressionist art.",
+    author: "Alex Martin",
+    readingTime: "4 min"
+  },
+  {
+    id: 15,
+    category: "art",
+    title: "The Intersection of Art and Technology",
+    content: "Explore the innovative use of technology in contemporary art.",
+    readingTime: "3 min"
+  },
+
+  // Music Articles
+  {
+    id: 16,
+    category: "music",
+    title: "The Evolution of Jazz: From Blues to Bebop",
+    content: "Trace the development of jazz music and its pioneers.",
+    author: "Miles Davis",
+    readingTime: "4 min"
+  },
+  {
+    id: 17,
+    category: "music",
+    title: "Classical Music: A Journey Through Time",
+    content: "Explore the classical music era and its iconic composers.",
+    author: "Ludwig Beethoven",
+    readingTime: "5 min"
+  },
+  {
+    id: 18,
+    category: "music",
+    title: "The Influence of Hip Hop on Pop Culture",
+    content: "Discover the impact of hip hop music on society and fashion.",
+    author: "Jay-Z",
+    readingTime: "3 min"
+  },
+  {
+    id: 19,
+    category: "music",
+    title: "The Rise of Electronic Dance Music (EDM)",
+    content: "Explore the global phenomenon of electronic dance music.",
+    author: "Calvin Harris",
+    readingTime: "4 min"
+  },
+  {
+    id: 20,
+    category: "music",
+    title: "Music Streaming Services and the Future of Listening",
+    content: "Learn how music streaming platforms have revolutionized music consumption.",
+    readingTime: "3 min"
+  },
+
+  // Nature Articles
+  {
+    id: 21,
+    category: "nature",
+    title: "The Breathtaking Beauty of National Parks",
+    content: "Discover stunning national parks and their ecological significance.",
+    author: "Natalie Johnson",
+    readingTime: "5 min"
+  },
+  {
+    id: 22,
+    category: "nature",
+    title: "The Wonders of Marine Biodiversity",
+    content: "Explore the rich diversity of marine life and conservation efforts.",
+    author: "David Brown",
+    readingTime: "4 min"
+  },
+  {
+    id: 23,
+    category: "nature",
+    title: "Preserving Endangered Species: Conservation Challenges",
+    content: "Learn about the conservation efforts for endangered species.",
+    author: "Alex Martin",
+    readingTime: "3 min"
+  },
+  {
+    id: 24,
+    category: "nature",
+    title: "The Power of Renewable Energy Sources",
+    content: "Explore the transition towards renewable energy solutions.",
+    author: "Sophie Davis",
+    readingTime: "4 min"
+  },
+  {
+    id: 25,
+    category: "nature",
+    title: "The Impact of Deforestation on Climate Change",
+    content: "Understand the consequences of deforestation on the planet.",
+    readingTime: "3 min"
+  },
+];
+
+export default articles;

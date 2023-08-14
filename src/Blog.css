@@ -1,0 +1,27 @@
+.blog-card {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .blog-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .blog-details {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+  }
+  
+  .blog-stat {
+    margin-right: 20px;
+  }
+  
+  .blog-stat i {
+    margin-right: 5px;
+  }

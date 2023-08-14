@@ -1,43 +1,34 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useState } from 'react';
+import axios from 'axios';
+import AuthForm from './AuthForm'; // Adjust the path as needed
+import "./Form.css"
 
-const LoginForm = () => {
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
+const LoginForm = ({ onLogin }) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loginMessage, setLoginMessage] = useState('');
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleLogin = async () => {
     try {
-      const response = await axios.post("/api/login", formData); // Replace with your backend API endpoint for user login
-      console.log(response.data); // Handle success or error messages from the backend
+      await axios.post('http://localhost:5000/check', { email, password });
+      setLoginMessage('Login successful');
+      onLogin(); // Call the onLogin function to update user state in App.js
     } catch (error) {
-      console.error("Error logging in:", error);
+      setLoginMessage('Login failed');
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="email"
-        name="email"
-        onChange={handleChange}
-        value={formData.email}
-      />
-      <input
-        type="password"
-        name="password"
-        onChange={handleChange}
-        value={formData.password}
-      />
-      <button type="submit">Login</button>
-    </form>
+    <AuthForm
+      email={email}
+      setEmail={setEmail}
+      password={password}
+      setPassword={setPassword}
+      buttonText="Log In"
+      onSubmit={handleLogin}
+      message={loginMessage}
+    />
   );
-};
+}
 
 export default LoginForm;

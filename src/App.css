@@ -1,20 +1,172 @@
+/* App.css */
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 1rem;
+  background-color: #eee;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+nav {
+  background-color: #f4f4f4;
+  padding: 10px;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-between;
+}
+
+nav li {
+  margin-right: 15px;
+}
+
+.nav-bar-link {
+  padding: 8px 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-bar-link:hover {
+  background-color: #ddd;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Styles for articles */
+.post {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 20px;
+  position: relative;
+  border-radius: 1rem;
+  background-color: beige;
+}
+
+.post img {
+  max-width: 100%;
+  margin-bottom: 10px;
+}
+
+.post h2 {
+  margin: 0;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.post p {
+  margin: 0;
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+.post p.topic {
+  font-style: italic;
+}
+
+.post p.author {
+  font-weight: bold;
+}
+
+.post p.reading-time {
+  color: #666;
+}
+
+.post p.likes,
+.post p.comments {
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.post button {
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+/* Search bar styles */
+.search-bar {
+  margin-top: 20px;
+}
+
+.search-bar input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.search-bar button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+/* New post styles */
+.new-post {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.new-post input,
+.new-post textarea {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.new-post button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.new-post button:last-child {
+  margin-right: 0;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
   }
-  
-  h1 {
-    text-align: center;
-  }
-  
-  .post {
-    border: 1px solid #ccc;
-    padding: 10px;
+  nav li {
+    margin-right: 0;
     margin-bottom: 10px;
   }
-  
-  .new-post {
-    border: 1px solid #ccc;
-    padding: 10px;
-  }
-  
+}

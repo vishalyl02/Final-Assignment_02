@@ -1,0 +1,31 @@
+.login-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.input-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  width: 300px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+}
+
+.login-button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.login-message {
+  margin-top: 10px;
+}

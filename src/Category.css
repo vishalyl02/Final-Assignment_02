@@ -1,0 +1,42 @@
+.category {
+    margin-bottom: 30px;
+  }
+  
+  .category-title {
+    font-size: 28px;
+    margin-bottom: 15px;
+  }
+  
+  .article-card {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .article-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .article-content {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .article-details {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #777;
+  }
+  
+  .article-author {
+    margin-right: 20px;
+  }
+  
+  .article-reading-time {
+    color: #555;
+  }
