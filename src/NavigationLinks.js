@@ -22,11 +22,6 @@ const NavigationLinks = ({ user, categories}) => {
             Home
           </Link>
         </li>
-        <li>
-          <Link to="/all-posts" className="nav-link">
-            All Posts
-          </Link>
-            </li>
 
         {user ? (
           <>
@@ -35,15 +30,24 @@ const NavigationLinks = ({ user, categories}) => {
                 User Profile
               </Link>
               </li>
-              <li>
+              {/* <li>
               <Link to="/create-post" className="nav-link">
-                PostCreationForm
+                Write
               </Link>
-              </li>
-         
+              </li> */}
+              <li>
+          <Link to="/all-posts" className="nav-link">
+            All Posts
+          </Link>
+            </li>
             <li>
-              <Link to="/my-posts" className="nav-link">
-                My Posts
+              <Link to="/bookmarks" className="nav-link">
+                View
+              </Link>
+            </li>
+            <li>
+              <Link to="/after" className="nav-link">
+                Drafts
               </Link>
             </li>
             <li>
@@ -53,7 +57,7 @@ const NavigationLinks = ({ user, categories}) => {
         </li>
         <li>
           <Link to="/drafts" className="nav-link">
-            Draft
+            Revision History
           </Link>
         </li>
             <li>
@@ -80,6 +84,7 @@ const NavigationLinks = ({ user, categories}) => {
                 Login
               </Link>
             </li>
+           
           </>
         )}
         {categories.map((category) => (
@@ -97,3 +102,5 @@ const NavigationLinks = ({ user, categories}) => {
 };
 
 export default NavigationLinks;
+
+

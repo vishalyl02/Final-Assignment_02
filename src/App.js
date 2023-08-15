@@ -2,16 +2,14 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { BrowserRouter as Router, Switch, Route, Link, useLocation } from "react-router-dom";
 import Login from "./LoginForm";
-import MyPosts from "./MyPosts";
+import MyItems from "./MyItems";
 import FollowAuthors from "./FollowAuthors";
 import Category from "./Category";
 import BlogEditor from "./BlogEditor";
-import articles from "./ArticleData"; // Import the sample article data
 import RegisterForm from "./RegisterForm";
 import axios from "axios";
 import PricingPage from "./Pricing";
 import "./style.css";
-import Drafts from "./Drafts";
 import BlogEdit from "./BlogEdit";
 import "./App.css"
 import SaveForLater from "./SaveForLater";
@@ -19,7 +17,15 @@ import NavigationLinks from "./NavigationLinks"
 import UserProfile from "./UserProfile";
 import PostCreationForm from "./PostCreationForm";
 import RevisionHistory from "./RevisionHistory";
-
+import scienceImages from "./Science";
+import businessImages from "./Business";
+import artImages from "./Art";
+import musicImages from "./Music";
+import natureImages from "./Nature";
+import BlogList from "./BlogList";
+import Drafts from "./Drafts";
+import Bookmark from "./Bookmarks"
+import AfterComponent from "./AfterComponent";
 
 
 
@@ -77,26 +83,7 @@ const Blog = ({ post, onDelete, onEdit, onSaveForLater }) => {
 };
 
 
-const Blg = ({ post, onDelete, onEdit, onSaveForLater }) => {
-  const readingTime = calculateReadingTime(post.text);
 
-  return (
-    <div className="post">
-      <h2>{post.title}</h2>
-      <p>Topic: {post.topic}</p>
-      <img src={post.featuredImage} alt="Featured" />
-      <p>{post.text}</p>
-      <p>Date: {post.dateTime}</p>
-      <p>Author: {post.author}</p>
-      <p>Likes: {post.likes}</p>
-      <p>Comments: {post.comments}</p>
-      <p>
-        Reading Time: {readingTime === "N/A" ? "N/A" : `${readingTime} minute${readingTime !== 1 ? 's' : ''}`}
-      </p>
-      
-    </div>
-  );
-};
 
 
 
@@ -116,19 +103,55 @@ const [filterDate, setFilterDate] = useState("");
   const [showAllPosts, setShowAllPosts] = useState(false);
   const [topics, setTopics] = useState([]); 
   const [showAddNewPostForm, setShowAddNewPostForm] = useState(false);
+  const [afterPosts, setAfterPosts] = useState([]);
 
   const handleToggleNewPostForm = () => {
     setShowAddNewPostForm(!showAddNewPostForm);
   };
 
+  const [drafts, setDrafts] = useState([]); // Define drafts state
+  const [stpts, setStpts] = useState([]); // Define posts state with a different name
+
+  const addDraftToPosts = (draft) => {
+    // Add the draft's details to the list of all posts using the setStpts function
+    setStpts((prevStpts) => [
+      ...prevStpts,
+      { ...draft, id: prevStpts.length + 1, likes: 0, comments: 0 },
+    ]);
+  };
+
+
+  const initialPostState = {
+    title: "",
+    topic: "",
+    featuredImage: "",
+    text: "",
+    dateTime: "",
+    author: "",
+  };
+  
+
+  const saveAsDraft = () => {
+    setDrafts((prevDrafts) => [...prevDrafts, newPost]); // Save the newPost as a draft
+    setNewPost({
+      title: "",
+      topic: "",
+      featuredImage: "",
+      text: "",
+      dateTime: "",
+      author: "",
+    });
+    history.push("/drafts"); // Navigate to the Drafts route
+  };
 
 
 
-
-
-
-
-
+  const saveAfter = () => {
+    const updatedAfterPosts = [...afterPosts, newPost];
+    setAfterPosts(updatedAfterPosts);
+    localStorage.setItem("afterPosts", JSON.stringify(updatedAfterPosts));
+    setNewPost(initialPostState); // Replace initialPostState with your initial post state
+  };
 
   const sortByLikes = () => {
     const sorted = [...filteredPosts].sort((a, b) => b.likes - a.likes);
@@ -158,7 +181,7 @@ const [filterDate, setFilterDate] = useState("");
 
   useEffect(() => {
     // Fetch the data from the backend API
-    axios.get("http://localhost:5000/api/blogs")
+    axios.get("http://localhost:5000/api/books")
       .then((response) => {
         setPosts(response.data); // Set the fetched data in the state
       })
@@ -350,25 +373,30 @@ const [filterDate, setFilterDate] = useState("");
       <NavigationLinks user={user} categories={categories} />
 
 <Switch>
-{categories.map((category) => (
+ {categories.map((category) => (
           <Route key={category} path={`/category/${category}`}>
             <Category
               name={category.charAt(0).toUpperCase() + category.slice(1)}
-              articles={topics.filter(
-                (topic) => topic.category === category // Change "post" to "topic"
-              )}
+              articles={topics.filter((topic) => topic.category === category)}
+              images={
+                category === "science"
+                  ? scienceImages
+                  : category === "business"
+                  ? businessImages
+                  : category === "art"
+                  ? artImages
+                  : category === "music"
+                  ? musicImages
+                  : category === "nature"
+                  ? natureImages
+                  : []
+              }
             />
           </Route>
         ))}
   <Route path="/" exact>
     <h1>Welcome to the Home Page</h1>
-    
-    {filteredPosts.map((post) => (
-              <Blg
-                key={post.id}
-                post={post}
-              />
-            ))}
+    <BlogList />
   </Route>
   <Route path="/pricing" component={PricingPage} />
   <Route path="/all-posts">
@@ -481,18 +509,22 @@ const [filterDate, setFilterDate] = useState("");
             value={newPost.author}
             onChange={handleInputChange}
           />
-         {/* Display different buttons for adding a new post or updating an edited post */}
-         {!editedPost.id ? (
-            <button onClick={addNewPost}>Submit Post</button>
-          ) : (
-            <button onClick={updatePost}>Update Post</button>
-          )}
+      <div>
+      {editedPost.id ? ( // Editing an existing post
+        <div>
+          <button onClick={updatePost}>Update Post</button>
         </div>
-            )}
+      ) : (
+        <div>
+          <button onClick={addNewPost}>Submit Post</button>
+          <button onClick={saveAfter}>Save as Draft</button> {/* Using "saveAfter" function */}
+        </div>
+      )}
+    </div>
+  </div>
+)}
           </Route>
 </Switch>
-
-
         <Route path="/saved-posts">
         <SaveForLaterPosts savedPosts={savedPosts} />
       </Route>
@@ -501,9 +533,13 @@ const [filterDate, setFilterDate] = useState("");
           <Route path="/register" component={RegisterForm} />
           <Route path="/login">
               <Login onLogin={handleLogin} />
-                  </Route>
-          <Route path="/drafts" component={Drafts} />
-          <Route path="/blog-editor" component={BlogEditor} />
+            </Route>
+                 
+            <Route path="/after" component={AfterComponent} />
+            <Route path="/drafts" component={Drafts} />
+                 <Route path="/bookmarks">
+              <Bookmark />
+            </Route>
 
           {user && (
             <>
@@ -511,11 +547,11 @@ const [filterDate, setFilterDate] = useState("");
               <UserProfile user={user} onLogout={handleLogout} />
               </Route>
               <Route path="/create-post">
-                <PostCreationForm authToken={user} />
-              </Route>
-              <Route path="/my-posts">
-                <MyPosts posts={posts} />
-              </Route>
+                     <PostCreationForm />
+                   </Route>
+                   <Route path="/my-items">
+              <MyItems />
+                 </Route>
               <Route path="/follow-authors">
                 <FollowAuthors authors={[]} onFollow={handleFollow} />
               </Route>

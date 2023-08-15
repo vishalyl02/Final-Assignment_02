@@ -1,0 +1,36 @@
+/* Drafts.css */
+
+.drafts-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    justify-content: space-between; /* Distribute items evenly between columns */
+  }
+  
+  .heading-container {
+    flex-basis: 100%; /* Take up full width */
+  }
+  
+  .content-container {
+    display: flex;
+    flex-basis: calc(50% - 10px); /* Two columns, adjust for spacing */
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+  }
+  
+  .draft {
+    border: 1px solid #ccc;
+    padding: 16px;
+    margin: 0 0 20px 0; /* Add margin to create space between items */
+    background-color: #f9f9f9;
+    flex-basis: calc(50% - 10px); /* Two columns, adjust for spacing */
+    box-sizing: border-box;
+  }
+  
+  .draft h3 {
+    margin-top: 0;
+  }
+  
+  .draft p {
+    margin-bottom: 0;
+  }
+  

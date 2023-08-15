@@ -6,6 +6,9 @@ const UserProfile = ({ user, onLogout }) => {
     onLogout();
   };
 
+  // Retrieve email from local storage
+  const userEmail = localStorage.getItem('userEmail');
+
   return (
     <div className="user-profile-container">
       {user ? (
@@ -16,6 +19,7 @@ const UserProfile = ({ user, onLogout }) => {
             className="profile-picture"
           />
           <h2>Welcome to The Blog !</h2>
+          {userEmail && <p>Email: {userEmail}</p>}
           {/* Add more profile information here */}
           <button className="logout-button" onClick={handleLogout}>
             Log Out

@@ -7,16 +7,21 @@ const LoginForm = ({ onLogin }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loginMessage, setLoginMessage] = useState('');
-
   const handleLogin = async () => {
     try {
-      await axios.post('http://localhost:5000/check', { email, password });
+      const response = await axios.post('http://localhost:5000/check', { email, password });
       setLoginMessage('Login successful');
+      
+      // Store email in local storage
+      localStorage.setItem('userEmail', email);
+  
       onLogin(); // Call the onLogin function to update user state in App.js
     } catch (error) {
       setLoginMessage('Login failed');
     }
   };
+  
+  
 
   return (
     <AuthForm

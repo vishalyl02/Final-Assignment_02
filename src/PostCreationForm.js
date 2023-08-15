@@ -1,35 +1,33 @@
 import React, { useState } from "react";
-import axios from "axios";
-import "./PostCreationForm.css"; // Import your custom CSS file for styling
+
 
 const PostCreationForm = ({ user }) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+ 
   const [isDraft, setIsDraft] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const handleSaveDraft = () => {
     setLoading(true);
 
-    const postData = {
+    const draftData = {
       title,
       content,
+
       isDraft: true,
-      userId: user.id, // Assuming the user object has an 'id' property
+  // Assuming the user object has a 'name' property
+      timestamp: new Date().toISOString(),
     };
 
-    axios
-      .post("/api/create-post", postData)
-      .then((response) => {
-        // Handle success, e.g., show a notification to the user
-        console.log("Post saved as draft");
-      })
-      .catch((error) => {
-        console.error("Error saving draft:", error);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    const drafts = JSON.parse(localStorage.getItem("drafts")) || [];
+    drafts.push(draftData);
+    localStorage.setItem("drafts", JSON.stringify(drafts));
+
+    // Handle success, e.g., show a notification to the user
+    console.log("Post saved as draft");
+
+    setLoading(false);
   };
 
   const handlePublishPost = () => {
@@ -38,28 +36,52 @@ const PostCreationForm = ({ user }) => {
     const postData = {
       title,
       content,
+ 
       isDraft: false,
-      userId: user.id, // Assuming the user object has an 'id' property
+     
+      timestamp: new Date().toISOString(),
     };
 
-    axios
-      .post("/api/create-post", postData)
-      .then((response) => {
-        // Handle success, e.g., show a notification to the user
-        console.log("Post published");
-      })
-      .catch((error) => {
-        console.error("Error publishing post:", error);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    const publishedPosts =
+      JSON.parse(localStorage.getItem("publishedPosts")) || [];
+    publishedPosts.push(postData);
+    localStorage.setItem("publishedPosts", JSON.stringify(publishedPosts));
+
+    // Handle success, e.g., show a notification to the user
+    console.log("Post published");
+
+    setLoading(false);
   };
 
   return (
     <div className="post-creation-form">
       <h2>Create a New Post</h2>
-      {/* ...rest of the component */}
+      <div className="form-group">
+        <label>Title</label>
+        <input
+          type="text"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+      </div>
+      <div className="form-group">
+        <label>Content</label>
+        <textarea
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+        />
+      </div>
+     
+      <div className="form-group">
+        <label>
+          <input
+            type="checkbox"
+            checked={isDraft}
+            onChange={() => setIsDraft(!isDraft)}
+          />
+          Save as Draft
+        </label>
+      </div>
       <div className="button-group">
         <button
           className="save-draft-button"

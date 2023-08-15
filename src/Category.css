@@ -26,17 +26,54 @@
     margin-bottom: 10px;
   }
   
-  .article-details {
-    display: flex;
-    justify-content: space-between;
-    font-size: 14px;
-    color: #777;
-  }
-  
-  .article-author {
-    margin-right: 20px;
-  }
-  
-  .article-reading-time {
-    color: #555;
-  }
+/* Category.css */
+
+/* ... Other styles ... */
+
+.article-details {
+  display: flex;
+  flex-direction: column; /* Display the details vertically */
+  font-size: 14px;
+  color: #777;
+  align-items: flex-start; /* Align items to the start (extreme left) */
+  margin-top: auto; /* Push details to the bottom of the container */
+}
+
+.article-author {
+  margin-right: 20px;
+}
+
+.article-reading-time {
+  color: #555;
+}
+
+/* ... Other styles ... */
+
+/* Category.css */
+
+/* ... Other styles ... */
+
+.article-content-container {
+  display: flex;
+  align-items: flex-start; /* Align items vertically at the start */
+  justify-content: space-between; /* Space between text and image */
+}
+
+.article-content-text {
+  flex: 1; /* Take up remaining space */
+}
+
+
+.article-image {
+  flex: 0 0 200px; /* Set a fixed width of 200px for the image */
+  margin-right: 30px; /* Add a margin of 30px to the right */
+  display: flex;
+  justify-content: flex-end; /* Align content to the end (extreme right) */
+}
+
+.article-image img {
+  width: 200px; /* Set a fixed width of 200px for the image */
+  height: 200px; /* Set a fixed height of 200px for the image */
+}
+
+/* ... Other styles ... */

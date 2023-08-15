@@ -1,31 +1,32 @@
-/* NavigationLinks.css */
+/* Navstyle.css */
 
 .navigation {
-  background-color: #2980b9;
-  height: 75px;
-  padding: 10px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  background-color: #333; /* Set your desired background color */
+  padding: 10px 20px;
+  position: sticky; /* Make the navigation sticky */
+  top: 0; /* Stick it to the top of the viewport */
+  z-index: 100; /* Ensure the navigation stays above other content */
 }
 
 .logo {
-  flex: 1;
+  padding: 10px;
+}
+
+.navigation-links {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 0;
 }
 
 .logo-image {
   margin: 10px 0;
   width: 150px;
   height: 70px;
-}
-
-.navigation-links {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0;
-  padding: 0;
 }
 
 .nav-link {
@@ -35,6 +36,8 @@
   padding: 5px 10px;
   font-weight: bold;
   transition: color 0.3s;
+  display: flex;
+  align-items: center;
 }
 
 .nav-link:hover {
